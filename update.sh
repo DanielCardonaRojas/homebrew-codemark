@@ -8,7 +8,7 @@ set -euo pipefail
 VERSION=${1:?Version required}
 SHA256=${2:?SHA256 required}
 
-sed -i '' "s|url \"https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/.*\"|url \"https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/v${VERSION}.tar.gz\"|" Formula/codemark.rb
+sed -i '' "s|url \"https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/.*\"|url \"https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/${VERSION}.tar.gz\"|" Formula/codemark.rb
 sed -i '' "s|sha256 \".*\"|sha256 \"${SHA256}\"|" Formula/codemark.rb
 
 echo "Updated Formula/codemark.rb to version ${VERSION}"
