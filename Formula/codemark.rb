@@ -13,7 +13,12 @@ class Codemark < Formula
   depends_on "rust" => :build
 
   def install
-    system "cargo", "install", "--no-default-features", *std_cargo_args
+    # Generate man pages first
+    system "cargo", "run", "--bin", "gen-man-pages", "--features", "man-pages"
+    # Install the binary
+    system "cargo", "install", "--features", "man-pages", "--no-default-features", *std_cargo_args
+    # Install man pages
+    man1.install Dir["man/*.1"]
   end
 
   test do
