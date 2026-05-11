@@ -14,11 +14,11 @@ class Codemark < Formula
 
   def install
     # Generate man pages first
-    system "cargo", "run", "--bin", "gen-man-pages", "--features", "man-pages"
+    system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--bin", "gen-man-pages", "--features", "man-pages"
     # Install the binary
-    system "cargo", "install", "--features", "man-pages", "--no-default-features", *std_cargo_args
+    system "cargo", "install", "--path", "crates/codemark-cli", "--features", "man-pages", "--no-default-features", *std_cargo_args
     # Install man pages
-    man1.install Dir["man/*.1"]
+    man1.install Dir["crates/codemark-cli/man/*.1"]
   end
 
   test do
