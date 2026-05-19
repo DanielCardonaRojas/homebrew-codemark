@@ -13,18 +13,22 @@ class Codemark < Formula
   depends_on "rust" => :build
 
   def install
-    # Generate man pages first
+    # Generate man pages
     system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--bin", "gen-man-pages", "--features", "man-pages"
-    # Install the binary
+    
+    # Install codemark-cli
     system "cargo", "install", "--path", "crates/codemark-cli", "--features", "man-pages", "--no-default-features", *std_cargo_args
+    
+    # Install codemark-tui
+    system "cargo", "install", "--path", "crates/codemark-tui", *std_cargo_args
+    
     # Install man pages
     man1.install Dir["crates/codemark-cli/man/*.1"]
   end
 
   test do
-    # Verify the binary runs
+    # Verify the binaries run
     assert_match "codemark", shell_output("#{bin}/codemark --version")
-    # Test that help works
-    assert_match "add", shell_output("#{bin}/codemark --help")
+    assert_match "codemark-tui", shell_output("#{bin}/codemark-tui --version")
   end
 end
