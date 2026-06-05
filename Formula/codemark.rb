@@ -23,10 +23,11 @@ class Codemark < Formula
     system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--bin", "gen-man-pages", "--features", "man-pages"
     
     # Install codemark-cli
-    system "cargo", "install", "--path", "crates/codemark-cli", "--features", "man-pages", "--no-default-features", *std_cargo_args
-    
+    system "cargo", "install", *std_cargo_args(path: "crates/codemark-cli"),
+           "--features", "man-pages", "--no-default-features"
+
     # Install codemark-tui
-    system "cargo", "install", "--path", "crates/codemark-tui", *std_cargo_args
+    system "cargo", "install", *std_cargo_args(path: "crates/codemark-tui")
     
     # Install man pages
     man1.install Dir["crates/codemark-cli/man/*.1"]
