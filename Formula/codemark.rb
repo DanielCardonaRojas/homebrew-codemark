@@ -13,6 +13,12 @@ class Codemark < Formula
   depends_on "rust" => :build
 
   def install
+    # Fix clap panic: non-required positional argument (repo) before required (server)
+    inreplace "crates/codemark-cli/src/cli/mod.rs" do |s|
+      s.gsub!(/pub struct RepoSetServerArgs \{(.*?)pub repo: Option<String>,(.*?)pub server: String,(.*?)\}/m,
+              "pub struct RepoSetServerArgs {\\1pub server: String,\\2pub repo: Option<String>,\\3}")
+    end
+
     # Generate man pages
     system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--bin", "gen-man-pages", "--features", "man-pages"
     
