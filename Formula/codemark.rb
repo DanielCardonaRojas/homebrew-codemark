@@ -6,25 +6,19 @@
 class Codemark < Formula
   desc "A structural bookmarking system for code using tree-sitter queries"
   homepage "https://github.com/DanielCardonaRojas/codemark"
-  url "https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/0.7.1.tar.gz"
-  sha256 "3338bafd8490a1fc5bfc79544d8ec3a0f1cc4ae1d6479bf8b96fbb3e02bf5eb4"
+  url "https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/0.7.2.tar.gz"
+  sha256 "995de04cd971e02ebe97217867970d7dceca964936995013cf2d0a40ad0aa225"
   license "MIT"
 
   depends_on "rust" => :build
 
   def install
-    # Fix clap panic: non-required positional argument (repo) before required (server)
-    inreplace "crates/codemark-cli/src/cli/mod.rs" do |s|
-      s.gsub!(/pub struct RepoSetServerArgs \{(.*?)pub repo: Option<String>,(.*?)pub server: String,(.*?)\}/m,
-              "pub struct RepoSetServerArgs {\\1pub server: String,\\2pub repo: Option<String>,\\3}")
-    end
-
     # Generate man pages
     system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--bin", "gen-man-pages", "--features", "man-pages"
     
     # Install codemark-cli
-    system "cargo", "install", *std_cargo_args(path: "crates/codemark-cli"),
-           "--features", "man-pages", "--no-default-features"
+    system "cargo", "install", "--no-default-features",
+           *std_cargo_args(path: "crates/codemark-cli", features: "man-pages")
 
     # Install codemark-tui
     system "cargo", "install", *std_cargo_args(path: "crates/codemark-tui")
