@@ -6,8 +6,8 @@
 class Codemark < Formula
   desc "A structural bookmarking system for code using tree-sitter queries"
   homepage "https://github.com/DanielCardonaRojas/codemark"
-  url "https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/0.7.4.tar.gz"
-  sha256 "ac94eb0abd658206a16cca6dd81c601b84bd061200d88bc791c5d5e15c62e6d0"
+  url "https://github.com/DanielCardonaRojas/codemark/archive/refs/tags/0.7.5.tar.gz"
+  sha256 "026d1bcb0c9d0fdb5f1fcd552666be654b3cb176e18a94e6498b8ac89f7f323b"
   license "MIT"
 
   depends_on "rust" => :build
