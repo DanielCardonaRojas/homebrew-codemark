@@ -14,7 +14,7 @@ class Codemark < Formula
 
   def install
     # Generate man pages
-    system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--bin", "gen-man-pages", "--features", "man-pages"
+    system "cargo", "run", "--manifest-path", "crates/codemark-cli/Cargo.toml", "--example", "gen-man-pages", "--features", "man-pages"
     
     # Install codemark-cli
     system "cargo", "install", "--no-default-features",
