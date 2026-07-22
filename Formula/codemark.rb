@@ -7,39 +7,39 @@
 class Codemark < Formula
   desc "A structural bookmarking system for code using tree-sitter queries"
   homepage "https://github.com/DanielCardonaRojas/codemark"
-  version "0.7.23"
+  version "0.7.24"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.23/codemark-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "79cd7bd425022b78e771bdfffb115e6e64c1c5092029a498e2e54a9fdad8dc0c"
+      url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.24/codemark-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "ce3143ba52c336aed7d9a709fae71ab9f0a2d0dc78b96ff080f02fa1b9626c37"
 
       resource "codemark-tui" do
-        url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.23/codemark-tui-aarch64-apple-darwin.tar.xz"
-        sha256 "83f15e9410cee48cc79c88f88b9d2f68bb2ea3db83a430e1ca2d3279fc4bffec"
+        url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.24/codemark-tui-aarch64-apple-darwin.tar.xz"
+        sha256 "3f05fe036d40bba0bc4158cb6ecab569bd9cb61ac6366e2c1a46296225f40024"
       end
     end
 
     on_intel do
-      url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.23/codemark-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "e9de1eba7c5edd9bf98a472aa2f530b1fc16edb3f647339d0b9d7fe178054855"
+      url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.24/codemark-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "9d62ed1cfff1c92b48afb841a0caefad4d5555707f03f31613cccd321ca57503"
 
       resource "codemark-tui" do
-        url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.23/codemark-tui-x86_64-apple-darwin.tar.xz"
-        sha256 "f5d4b93288d7dc52705775127685db4ccfda9e2ecbdc361d2e1d47a6aa1b3398"
+        url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.24/codemark-tui-x86_64-apple-darwin.tar.xz"
+        sha256 "fadf87cdd9619b08fc15b4ad00b7bbac3e8129c236388aacf5397942bced688c"
       end
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.23/codemark-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "e32e3ce41997d1674f846ddd9e870fba29ec18a638f2c6e889f56a8107aeb335"
+      url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.24/codemark-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "9156deb4fd109aef8944aaaab7748760a08e01f6eaa2f7f3113d4bd1719b8cdb"
 
       resource "codemark-tui" do
-        url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.23/codemark-tui-x86_64-unknown-linux-gnu.tar.xz"
-        sha256 "cd2993f2c0fa6a86d5b5bb7217022fdd594acd3f50cdf8cb3be2f9ed5dbf4795"
+        url "https://github.com/DanielCardonaRojas/codemark/releases/download/0.7.24/codemark-tui-x86_64-unknown-linux-gnu.tar.xz"
+        sha256 "04c7c5bcf1ff4087bb1194dff7abbd7919a3f7b9816f5fde189bf0f81e84aae7"
       end
     end
   end
